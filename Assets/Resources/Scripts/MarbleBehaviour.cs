@@ -16,7 +16,10 @@ public class MarbleBehaviour : MonoBehaviour
         PURPLE,
         RED
     };
-    private int MarbleValue;
+
+    //Value for storing point system
+    private int marbleValue;
+
     //Setup the marble based on colour
     public void SetupMarble(MarbleColour Colour)
     {
@@ -24,28 +27,28 @@ public class MarbleBehaviour : MonoBehaviour
         switch (Colour)
         {
             case MarbleColour.GREEN:
-                MarbleValue = 10;
+                marbleValue = 10;
                 Mesh.material = Resources.Load("Materials/Green", typeof(Material)) as Material;
                 break;
             
             case MarbleColour.BLUE:
-                MarbleValue = 20;
+                marbleValue = 20;
                 Mesh.material = Resources.Load("Materials/Blue", typeof(Material)) as Material;
                 break;
 
             case MarbleColour.YELLOW:
                 Mesh.material = Resources.Load("Materials/Yellow", typeof(Material)) as Material;
-                MarbleValue = 30;
+                marbleValue = 30;
                 break;
 
             case MarbleColour.PURPLE:
                 Mesh.material = Resources.Load("Materials/Purple", typeof(Material)) as Material;
-                MarbleValue = 50;
+                marbleValue = 50;
                 break;
 
             case MarbleColour.RED:
                 Mesh.material = Resources.Load("Materials/Red", typeof(Material)) as Material;
-                MarbleValue = -60;
+                marbleValue = -60;
                 break;
           
         }
@@ -54,9 +57,9 @@ public class MarbleBehaviour : MonoBehaviour
 
 
     //Retrieve the marble value
-    int GetPointValue()
+    public int GetPointValue()
     {
-        return MarbleValue;
+        return marbleValue;
     }
 
     // Start is called before the first frame update

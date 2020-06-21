@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class MarbleSpawning : MonoBehaviour
 {
-    public GameObject Marble;
-    private int RangeSize = 5;
-    public float Force = 20.0f;
+    public GameObject marble;
+    private float force = 20.0f;
     bool doOnce = false;
     // Start is called before the first frame update
     void Start()
@@ -33,7 +32,7 @@ public class MarbleSpawning : MonoBehaviour
     }
     void SpawnMarble(MarbleBehaviour.MarbleColour colour)
     {
-        GameObject Instance = Instantiate(Marble, Vector3.zero + transform.position, Quaternion.identity);
+        GameObject Instance = Instantiate(marble, Vector3.zero + transform.position, Quaternion.identity);
         if (Instance != null)
         {
             MarbleBehaviour MyScript = Instance.GetComponent<MarbleBehaviour>();
@@ -44,7 +43,7 @@ public class MarbleSpawning : MonoBehaviour
             }
 
             Rigidbody rigidbody = Instance.GetComponent<Rigidbody>();
-            rigidbody.AddForce(transform.forward * Force, ForceMode.Impulse);
+            rigidbody.AddForce(transform.forward * force, ForceMode.Impulse);
         }
         
     }
