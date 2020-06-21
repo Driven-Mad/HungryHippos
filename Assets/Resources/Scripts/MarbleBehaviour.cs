@@ -17,7 +17,6 @@ public class MarbleBehaviour : MonoBehaviour
         RED
     };
     private int MarbleValue;
-    public float Force = 10;
     //Setup the marble based on colour
     public void SetupMarble(MarbleColour Colour)
     {
@@ -63,15 +62,12 @@ public class MarbleBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Rigidbody rigidbody = this.GetComponent<Rigidbody>();
-        Vector3 direction = new Vector3(Random.insideUnitCircle.x, Random.insideUnitCircle.y, 1.0f) * Random.Range(-10.0f, 10.0f) * Force;
-        rigidbody.AddForce(direction);
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
