@@ -19,11 +19,15 @@ public class MarbleBehaviour : MonoBehaviour
 
     //Value for storing point system
     private int marbleValue;
+    public Rigidbody marbleRigidbody;
+    public bool resetMe = false;
+    public bool endMe = false;
 
     //Setup the marble based on colour
     public void SetupMarble(MarbleColour Colour)
     {
         MeshRenderer Mesh = this.GetComponent<MeshRenderer>();
+        marbleRigidbody = this.GetComponent<Rigidbody>();
         switch (Colour)
         {
             case MarbleColour.GREEN:
@@ -65,12 +69,24 @@ public class MarbleBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Handling falling out of map
+        if(transform.position.y < -20.0f)
+        {
+            resetMe = true;
+        }
+    }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if(collision.gameObject.tag == "Wall")
+        {
+            resetMe = true;
+            Debug.Log("Hitting wall");
+        }
     }
 }

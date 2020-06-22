@@ -5,15 +5,19 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public int score = 0;
-    bool spacePressed = false;
+    int score = 0;
     Animator animator;
     public GameObject scoreUI;
+    Text uiScoreText;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        if (scoreUI)
+        {
+            uiScoreText = scoreUI.GetComponent<Text>();
+        }
     }
 
     // Update is called once per frame
@@ -32,15 +36,16 @@ public class PlayerController : MonoBehaviour
         //Change UI Score
         if(scoreUI)
         {
-            scoreUI.GetComponent<Text>().text = score.ToString();
+            uiScoreText.text = score.ToString();
         }
 
     }
     public IEnumerator EatMarble(GameObject marble)
     {
-        score += marble.GetComponent<MarbleBehaviour>().GetPointValue();
+        MarbleBehaviour behaviour = marble.GetComponent<MarbleBehaviour>();
+        score += behaviour.GetPointValue();
         yield return new WaitForSeconds(0.2f);
-        Destroy(marble);
+        behaviour.endMe = true;
 
     }
     public void OnTriggerStay(Collider other)

@@ -5,15 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public GameObject PauseMenuUI;
+    public GameObject pauseMenuUI;
 
     // Update is called once per frame
 
     private void Start()
     {
-        if (PauseMenuUI != null)
+        if (pauseMenuUI != null)
         {
-            PauseMenuUI.SetActive(false);
+            pauseMenuUI.SetActive(false);
         }
     }
     void Update()
@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour
         {
 
             //If not passed in pause menu, then we are in the main menu so quit
-            if (PauseMenuUI != null)
+            if (pauseMenuUI != null)
             {
                 Pause();
             }
@@ -36,9 +36,9 @@ public class MenuManager : MonoBehaviour
     public void Pause()
     {
 
-        if (PauseMenuUI != null)
+        if (pauseMenuUI != null)
         {
-            PauseMenuUI.SetActive(true);
+            pauseMenuUI.SetActive(true);
             //Set timescale to 0 to pause the game
             Time.timeScale = 0.0f;
         }
@@ -47,9 +47,9 @@ public class MenuManager : MonoBehaviour
     public void Resume()
     {
 
-        if (PauseMenuUI != null)
+        if (pauseMenuUI != null)
         {
-            PauseMenuUI.SetActive(false);
+            pauseMenuUI.SetActive(false);
             //Set timescale to 1 to resume the game
             Time.timeScale = 1.0f;
         }
