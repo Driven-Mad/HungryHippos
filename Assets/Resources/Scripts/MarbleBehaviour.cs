@@ -22,6 +22,7 @@ public class MarbleBehaviour : MonoBehaviour
     public Rigidbody marbleRigidbody;
     public bool resetMe = false;
     public bool endMe = false;
+    public bool pendingEndMe = false;
     public MeshRenderer marbleMeshRenderer;
 
     //Setup the marble based on colour

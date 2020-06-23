@@ -8,14 +8,14 @@ public class MarbleManager : MonoBehaviour
     public GameObject[] spawners;
     public List<MarbleSpawning> spawnersBehaviour;
     int totalCount = 0 ;
-    public GameObject scoreUI;
+    public GameObject ballCountUI;
     Text uiScoreText;
     // Start is called before the first frame update
     void Start()
     {
-        if (scoreUI)
+        if (ballCountUI)
         {
-            uiScoreText = scoreUI.GetComponent<Text>();
+            uiScoreText = ballCountUI.GetComponent<Text>();
         }
         foreach (GameObject spawner in spawners)
         {

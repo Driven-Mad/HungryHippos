@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     float forceAmplifier= 0.1f;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,14 +42,8 @@ public class PlayerController : MonoBehaviour
         if(highlightChangeCountdown < 0)
         {
             wallPanels[wallHighlight].GetComponent<MeshRenderer>().material = arenaMaterial;
-            if (!highligthReverse)
-            {
-                wallHighlight++;
-            }
-            else
-            {
-                wallHighlight--;
-            }
+            wallHighlight += highligthReverse ? -1 : 1;
+
             if (wallHighlight == wallAmount-1 )
             {
                 highligthReverse = true;
@@ -103,9 +98,13 @@ public class PlayerController : MonoBehaviour
     public IEnumerator EatMarble(GameObject marble)
     {
         MarbleBehaviour behaviour = marble.GetComponent<MarbleBehaviour>();
-        score += behaviour.GetPointValue();
-        yield return new WaitForSeconds(0.2f);
-        behaviour.endMe = true;
+        if (!behaviour.pendingEndMe)
+        {
+            behaviour.pendingEndMe = true;
+            score += behaviour.GetPointValue();
+            yield return new WaitForSeconds(0.5f);
+            behaviour.endMe = true;
+        }
 
     }
     
